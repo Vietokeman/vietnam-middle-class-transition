@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================================
+   TẦNG LỚP TRUNG LƯU VIỆT NAM
+   Kỷ Nguyên Vươn Mình - Theme Styles
+   Vietnam Red & Gold Color Palette
+   =================================== */
+
+/* Fix font rendering for Vietnamese diacritics */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateY(0deg) rotateZ(0deg);
+  }
+  25% {
+    transform: translateY(-12px) rotateY(8deg) rotateZ(3deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateY(0deg) rotateZ(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotateY(-8deg) rotateZ(-3deg);
+  }
+}
+
+:root {
+  /* Vietnam Flag & Banner Color Palette - Inspired by baochinhphu.vn */
+  --vietnam-red: #ac0705;
+  --vietnam-gold: #ffd700;
+  --vietnam-white: #ffffff;
+  --deep-red: #8b1a1a;
+  --primary-red: #B22222;
+  --off-white: #fafafa;
+
+  /* Historical & Academic Color Palette */
+  --ancient-stone: #6b6560;
+  --royal-burgundy: #8b1a1a;
+  --timeless-navy: #0f1c3f;
+  --rustic-olive: #4a5d23;
+  --antique-parchment: #fafafa;
+  --parchment-dark: #e8dcc8;
+  --sepia: #704214;
+  --ink-black: #1a1a1a;
+  
+  /* Middle Class Theme - Modern & Progressive */
+  --middle-blue: #1e40af;
+  --middle-green: #15803d;
+  --middle-amber: #d97706;
+
+  /* Semantic colors */
+  --background: linear-gradient(
+    135deg,
+    var(--vietnam-red) 0%,
+    #d32f2f 50%,
+    #ac0705 100%
+  );
+  --foreground: var(--vietnam-white);
+  --card-background: var(--off-white);
+  --card-border: var(--vietnam-gold);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card-background);
+  --color-card-foreground: var(--ink-black);
+  --color-border: var(--card-border);
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    @apply antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Base Typography - Vietnamese optimized */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@layer components {
+  /* Vietnam Flag Button */
+  .btn-vietnam {
+    @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300;
+    background: linear-gradient(135deg, #B22222 0%, #ac0705 100%);
+    box-shadow: 0 4px 14px rgba(178, 34, 34, 0.4);
+  }
+
+  .btn-vietnam:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.5);
+  }
+
+  /* Gold Accent Button */
+  .btn-gold {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, #FFD700 0%, #C9A227 100%);
+    color: #1a1a1a;
+    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.4);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+  }
+
+  /* Glass Card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+  }
+
+  /* Content Card */
+  .content-card {
+    @apply bg-white rounded-2xl shadow-xl p-6;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+  }
+
+  /* Vietnam Gradient Background */
+  .bg-vietnam {
+    background: linear-gradient(135deg, #B22222 0%, #d32f2f 50%, #ac0705 100%);
+  }
+
+  /* Gold Gradient Text */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #FFD700 0%, #C9A227 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section Container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+  }
+
+  /* Animate Section for GSAP */
+  .animate-section .animate-item {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+}
+
+@layer utilities {
+  /* Vietnam Star (5-pointed) */
+  .star-vietnam {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #B22222, #FFD700);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ac0705, #C9A227);
+  }
+
+  /* Grain Texture Overlay */
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Markdown Styling for Chat */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply font-bold text-gray-900 mt-4 mb-2;
+}
+
+.markdown-content h1 {
+  @apply text-xl;
+}
+
+.markdown-content h2 {
+  @apply text-lg;
+}
+
+.markdown-content h3 {
+  @apply text-base;
+}
+
+.markdown-content p {
+  @apply mb-3 leading-relaxed;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply ml-4 mb-3;
+}
+
+.markdown-content li {
+  @apply mb-1;
+}
+
+.markdown-content strong {
+  @apply font-semibold text-vietnam-red-700;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-vietnam-gold-500 pl-4 italic text-gray-600 my-3;
+}
+
+/* YouTube Embed Responsive */
+.youtube-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
