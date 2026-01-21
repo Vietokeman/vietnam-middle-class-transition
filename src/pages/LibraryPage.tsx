@@ -131,17 +131,18 @@ export default function LibraryPage() {
           <div className="w-full h-full">
             <DomeGallery
               images={domeImages}
-              fit={0.65}
+              fit={0.55}
               fitBasis="auto"
-              minRadius={400}
-              maxRadius={900}
-              dragSensitivity={20}
+              minRadius={350}
+              maxRadius={800}
+              maxVerticalRotationDeg={25}
+              dragSensitivity={18}
               enlargeTransitionMs={300}
-              segments={20}
+              segments={24}
               dragDampening={1.5}
               openedImageWidth="500px"
               openedImageHeight="500px"
-              imageBorderRadius="15px"
+              imageBorderRadius="12px"
               openedImageBorderRadius="25px"
               grayscale={false}
             />
@@ -153,7 +154,7 @@ export default function LibraryPage() {
               bend={3}
               textColor="#FFD700"
               borderRadius={0.08}
-              font="bold 28px 'Playfair Display', serif"
+              font="bold 28px 'Crimson Pro', serif"
               scrollSpeed={1}
               scrollEase={0.08}
             />

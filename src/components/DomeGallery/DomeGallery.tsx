@@ -85,8 +85,9 @@ const getDataNumber = (el: HTMLElement, name: string, fallback: number) => {
 
 function buildItems(pool: ImageItem[], seg: number): ItemDef[] {
   const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2);
-  const evenYs = [-4, -2, 0, 2, 4];
-  const oddYs = [-3, -1, 1, 3, 5];
+  // Mở rộng dải Y để dome phủ đều hơn trên và dưới
+  const evenYs = [-8, -6, -4, -2, 0, 2, 4, 6, 8];
+  const oddYs = [-7, -5, -3, -1, 1, 3, 5, 7];
 
   const coords = xCols.flatMap((x, c) => {
     const ys = c % 2 === 0 ? evenYs : oddYs;
