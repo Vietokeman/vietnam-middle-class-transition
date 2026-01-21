@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Youtube, MessageCircle, Gamepad2, BookOpen, Info } from 'lucide-react';
+import { Menu, X, Home, Youtube, Gamepad2, BookOpen, Info } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,9 +21,8 @@ const Header: React.FC = () => {
     { path: '/', label: 'Trang chủ', icon: <Home size={18} /> },
     { path: '/kien-thuc', label: 'Kiến thức', icon: <BookOpen size={18} /> },
     { path: '/video', label: 'Video', icon: <Youtube size={18} /> },
-    { path: '/chat', label: 'Chatbot', icon: <MessageCircle size={18} /> },
     { path: '/game', label: 'Trò chơi', icon: <Gamepad2 size={18} /> },
-    { path: '/ai-usage', label: 'Báo cáo AI', icon: <Info size={18} /> },
+    { path: '/ai-usage', label: 'Báo cáo AI', icon: <BookOpen size={18} /> },
     { path: '/about', label: 'Giới thiệu', icon: <Info size={18} /> },
   ];
 

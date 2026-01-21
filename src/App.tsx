@@ -1,19 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer, ScrollToTop } from '@/components/layout';
 import { IntroLoader, IntroSection } from '@/components/Intro';
 import { FloatingChatBot } from '@/components/ChatBot';
-import { 
-  HomePage, 
-  KnowledgePage, 
-  VideoPage, 
-  ChatPage, 
-  GamePage, 
-  AIUsagePage, 
-  AboutPage 
-} from '@/pages';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Lazy load pages for code splitting (bundle-dynamic-imports best practice)
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const KnowledgePage = lazy(() => import('@/pages/KnowledgePage'));
+const VideoPage = lazy(() => import('@/pages/VideoPage'));
+const GamePage = lazy(() => import('@/pages/GamePage'));
+const AIUsagePage = lazy(() => import('@/pages/AIUsagePage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-yellow-50 to-white">
+    <div className="text-center">
+      <div className="w-12 h-12 border-4 border-vietnam-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+      <p className="text-gray-600">Đang tải...</p>
+    </div>
+  </div>
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,11 +107,11 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* Intro Loader */}
-      {showIntroLoader && <IntroLoader onComplete={handleIntroLoaderComplete} />}
+      {/* Intro Loader - using ternary for explicit conditional (rendering-conditional-render) */}
+      {showIntroLoader ? <IntroLoader onComplete={handleIntroLoaderComplete} /> : null}
 
       {/* Intro Section */}
-      {showIntroSection && <IntroSection onComplete={handleIntroSectionComplete} />}
+      {showIntroSection ? <IntroSection onComplete={handleIntroSectionComplete} /> : null}
 
       {/* Main Content */}
       <div
@@ -116,15 +125,16 @@ const App: React.FC = () => {
             <Header />
 
             <main>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/kien-thuc" element={<KnowledgePage />} />
-                <Route path="/video" element={<VideoPage />} />
-                <Route path="/chat" element={<ChatPage />} />
-                <Route path="/game" element={<GamePage />} />
-                <Route path="/ai-usage" element={<AIUsagePage />} />
-                <Route path="/about" element={<AboutPage />} />
-              </Routes>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/kien-thuc" element={<KnowledgePage />} />
+                  <Route path="/video" element={<VideoPage />} />
+                  <Route path="/game" element={<GamePage />} />
+                  <Route path="/ai-usage" element={<AIUsagePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                </Routes>
+              </Suspense>
             </main>
 
             <Footer />

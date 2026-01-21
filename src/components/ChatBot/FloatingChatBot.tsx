@@ -10,14 +10,11 @@ interface Message {
   timestamp: Date;
 }
 
-const FloatingChatBot: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '0',
-      role: 'model',
-      content: `Xin chào! 👋 Tôi là **Trợ lý Học tập Tầng lớp Trung lưu Việt Nam** - chuyên gia về Chủ nghĩa xã hội khoa học.
+// Initial welcome message - hoisted outside component (rendering-hoist-jsx best practice)
+const createInitialMessage = (): Message[] => [{
+  id: '0',
+  role: 'model',
+  content: `Xin chào! 👋 Tôi là **Trợ lý Học tập Tầng lớp Trung lưu Việt Nam** - chuyên gia về Chủ nghĩa xã hội khoa học.
 
 📚 Tôi sẽ trả lời dựa trên **Chương 5** - Cơ cấu xã hội giai cấp trong thời kỳ quá độ.
 
@@ -27,9 +24,14 @@ const FloatingChatBot: React.FC = () => {
 - Vai trò trong kinh tế thị trường định hướng XHCN
 - Số liệu thực tế và xu hướng phát triển
 - Kỷ nguyên vươn mình và mục tiêu 2045`,
-      timestamp: new Date(),
-    }
-  ]);
+  timestamp: new Date(),
+}];
+
+const FloatingChatBot: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  // Lazy state initialization (rerender-lazy-state-init best practice)
+  const [messages, setMessages] = useState<Message[]>(createInitialMessage);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
