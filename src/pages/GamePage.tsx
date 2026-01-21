@@ -141,7 +141,7 @@ const GamePage: React.FC = () => {
   const question = quizQuestions[currentQuestion];
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-purple-50 via-vietnam-gold-50 to-white">
+    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

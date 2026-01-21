@@ -170,27 +170,63 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
       {/* Vietnam Flag Wipe Effect */}
       {phase === "flag" && (
         <div
-          className="absolute inset-0 bg-[#ac0705] z-10"
+          className="absolute inset-0 z-10 overflow-hidden"
           style={{
             clipPath: `polygon(0 0, ${flagProgress}% 0, ${flagProgress}% 100%, 0 100%)`,
           }}
         >
-          {/* Gold Star */}
-          {flagProgress > 50 && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg
-                className="w-32 h-32 md:w-48 md:h-48 text-[#FFD700]"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style={{
-                  opacity: (flagProgress - 50) / 50,
-                  transform: `scale(${0.5 + (flagProgress - 50) / 100})`,
-                }}
-              >
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
-            </div>
-          )}
+          {/* Red flag background with wave effect */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "#B22222",
+              backgroundImage: `
+                linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%)
+              `,
+              backgroundSize: "60px 60px",
+            }}
+          >
+            {/* Waving effect overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `
+                  linear-gradient(90deg, 
+                    rgba(0,0,0,0.2) 0%, 
+                    rgba(255,255,255,0.1) 20%, 
+                    rgba(0,0,0,0.15) 40%,
+                    rgba(255,255,255,0.1) 60%,
+                    rgba(0,0,0,0.2) 80%,
+                    rgba(255,255,255,0.05) 100%
+                  )
+                `,
+              }}
+            />
+          </div>
+
+          {/* Gold Star - centered with glow */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg
+              className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 text-[#FFD700] drop-shadow-2xl"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              style={{
+                filter: "drop-shadow(0 0 30px rgba(255, 215, 0, 0.5))",
+                animation: "starPulse 1.5s ease-in-out infinite",
+              }}
+            >
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+
+          {/* Grain overlay on flag */}
+          <div
+            className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            }}
+          />
         </div>
       )}
 
@@ -206,7 +242,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-[#FFD700]" />
         </div>
 
-        {/* Icon representing Middle Class Growth */}
+        {/* Light/Star icon with glow effect */}
         <div className="mb-8 relative">
           <div className="absolute inset-0 bg-[#FFD700] blur-xl opacity-40 animate-pulse" />
           <svg
@@ -214,7 +250,6 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
             viewBox="0 0 24 24"
             fill="currentColor"
           >
-            {/* Rising arrow with people - symbolizing middle class growth */}
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
           {/* Light rays effect */}
@@ -228,21 +263,29 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
 
         {/* Line 1 - Vietnamese */}
         <div className="text-center mb-4 min-h-[2rem] md:min-h-[3rem]">
-          <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wide">
+          <p
+            className="text-xl md:text-3xl lg:text-4xl text-white/90 tracking-wide font-serif"
+            style={{
+              textShadow: "0 0 40px rgba(255, 215, 0, 0.3)",
+            }}
+          >
             {text1}
             {showCursor1 && (
               <span className="animate-pulse text-[#FFD700]">|</span>
             )}
-          </h1>
+          </p>
         </div>
 
         {/* Line 2 - Subtitle */}
-        <div className="text-center min-h-[1.5rem] md:min-h-[2rem]">
-          <p className="text-lg md:text-xl text-[#FFD700]/90 font-light italic tracking-wide">
+        <div className="text-center min-h-[2rem] md:min-h-[3rem]">
+          <p
+            className="text-lg md:text-2xl lg:text-3xl text-[#FFD700] tracking-wide italic font-serif"
+            style={{
+              textShadow: "0 0 30px rgba(255, 215, 0, 0.4)",
+            }}
+          >
             {text2}
-            {showCursor2 && (
-              <span className="animate-pulse text-white">|</span>
-            )}
+            {showCursor2 && <span className="animate-pulse text-white">|</span>}
           </p>
         </div>
 
@@ -253,13 +296,24 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-[#FFD700]" />
         </div>
 
-        {/* Loading indicator */}
-        {phase === "loading" && (
-          <div className="mt-12">
-            <div className="w-8 h-8 border-2 border-[#FFD700]/30 border-t-[#FFD700] rounded-full animate-spin" />
-          </div>
-        )}
+        {/* Project name badge */}
+        <div className="mt-12 px-6 py-2 border border-[#FFD700]/30 rounded-full">
+          <span className="text-[#FFD700]/70 text-sm md:text-base tracking-[0.3em] font-light uppercase">
+            Tầng lớp Trung lưu Việt Nam
+          </span>
+        </div>
       </div>
+
+      {/* Loading indicator */}
+      {phase === "loading" && (
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-[#FFD700] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+            <div className="w-2 h-2 bg-[#FFD700] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+            <div className="w-2 h-2 bg-[#FFD700] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

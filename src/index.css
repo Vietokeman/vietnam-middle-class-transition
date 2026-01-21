@@ -294,3 +294,197 @@ body {
   height: 100%;
   border: 0;
 }
+
+/* ===================================
+   ANIMATIONS FROM PROJECT-1848
+   =================================== */
+
+/* Star pulse animation for intro */
+@keyframes starPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.8));
+    transform: scale(1.05);
+  }
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(172, 7, 5, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(172, 7, 5, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animated title effect */
+.animated-title {
+  @apply flex flex-col gap-1 text-4xl uppercase leading-[.95] text-gray-900 sm:px-10 md:text-[3.5rem];
+}
+
+.animated-word {
+  font-weight: 900;
+  opacity: 0;
+  transform: translate3d(10px, 24px, -60px) rotateY(20deg) rotateX(-30deg);
+  transform-origin: 50% 50% -150px;
+  will-change: opacity, transform;
+}
+
+/* Three body loading animation */
+.three-body {
+  --uib-size: 35px;
+  --uib-speed: 0.8s;
+  --uib-color: #ac0705;
+  position: relative;
+  display: inline-block;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.three-body__dot {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+}
+
+.three-body__dot:after {
+  content: '';
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--uib-color);
+  border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite ease-in-out;
+}
+
+.three-body__dot:nth-child(2) {
+  bottom: 5%;
+  right: 0;
+  transform: rotate(-60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) calc(var(--uib-speed) * -0.33) infinite ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+  bottom: -5%;
+  left: 0;
+  transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+  top: 0;
+  left: 0;
+  animation: wobble2 var(--uib-speed) calc(var(--uib-speed) * -0.66) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes wobble1 {
+  0%, 100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+@keyframes wobble2 {
+  0%, 100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+/* Hover effects */
+.nav-hover-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-hover-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ac0705, #FFD700);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-hover-btn:hover::after {
+  width: 100%;
+}
+
+/* Card hover animation */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(172, 7, 5, 0.15);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease forwards;
+}
