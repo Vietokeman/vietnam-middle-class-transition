@@ -52,22 +52,37 @@ const VideoPage: React.FC = () => {
     : videos.filter(v => v.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page">
+      {/* Floating Stars */}
+      {[...Array(4)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${20 + i * 18}%`,
+            right: `${3 + i * 2}%`,
+            animationDelay: `${i * 0.6}s`,
+            fontSize: `${14 + i * 5}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <Youtube size={20} />
             <span className="font-medium">Video giảng dạy</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
             Video học tập
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
             Xem trực tiếp các video giảng dạy về tầng lớp trung lưu và Chủ nghĩa xã hội khoa học
           </p>
         </motion.div>

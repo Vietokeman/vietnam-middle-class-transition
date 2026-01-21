@@ -56,22 +56,37 @@ const AIUsagePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page">
+      {/* Floating Stars */}
+      {[...Array(4)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${15 + i * 20}%`,
+            right: `${5 + i * 3}%`,
+            animationDelay: `${i * 0.7}s`,
+            fontSize: `${16 + i * 4}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <Bot size={20} />
             <span className="font-medium">Báo cáo AI</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
             Ứng dụng AI có trách nhiệm
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
             Báo cáo minh bạch về việc sử dụng trí tuệ nhân tạo trong dự án 
             "Tầng lớp trung lưu Việt Nam trong kỷ nguyên vươn mình"
           </p>

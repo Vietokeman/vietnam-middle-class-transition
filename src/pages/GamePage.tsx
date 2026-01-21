@@ -141,22 +141,38 @@ const GamePage: React.FC = () => {
   const question = quizQuestions[currentQuestion];
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page relative">
+        {/* Floating Stars */}
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="floating-star hidden md:block"
+            style={{
+              top: `${10 + i * 12}%`,
+              left: i % 2 === 0 ? `${4 + i}%` : 'auto',
+              right: i % 2 === 1 ? `${4 + i}%` : 'auto',
+              animationDelay: `${i * 0.4}s`,
+              fontSize: `${12 + i * 3}px`
+            }}
+          >
+            ★
+          </div>
+        ))}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <Gamepad2 size={20} />
             <span className="font-medium">Trò chơi tương tác</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
             Quiz: Tầng lớp Trung lưu
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-white/80">
             Kiểm tra kiến thức của bạn về Chương 5 CNXH Khoa học
           </p>
         </motion.div>
@@ -165,13 +181,13 @@ const GamePage: React.FC = () => {
           <>
             {/* Progress */}
             <div className="mb-8">
-              <div className="flex justify-between text-sm text-gray-600 mb-2">
+              <div className="flex justify-between text-sm text-white/80 mb-2">
                 <span>Câu {currentQuestion + 1}/{quizQuestions.length}</span>
                 <span>Điểm: {score}/{currentQuestion + (showResult ? 1 : 0)}</span>
               </div>
-              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-2 bg-white/20 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-vietnam-red-600 to-vietnam-gold-500"
+                  className="h-full bg-gradient-to-r from-vietnam-gold-400 to-vietnam-gold-600"
                   initial={{ width: 0 }}
                   animate={{ width: `${((currentQuestion + (showResult ? 1 : 0)) / quizQuestions.length) * 100}%` }}
                 />
