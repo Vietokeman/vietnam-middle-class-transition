@@ -98,6 +98,35 @@ Mở trình duyệt: [http://localhost:5173](http://localhost:5173)
 npm run build
 ```
 
+### Bước 5: Deploy lên Vercel
+
+**Cách 1: Qua Vercel Dashboard (Khuyến nghị)**
+
+1. Truy cập [vercel.com](https://vercel.com) và đăng nhập
+2. Click "Add New Project"
+3. Import repository `vietnam-middle-class-transition` từ GitHub
+4. Cấu hình Environment Variables (Settings > Environment Variables):
+   - `VITE_GEMINI_API_KEY`
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+   - `VITE_FIREBASE_MEASUREMENT_ID`
+5. Click "Deploy"
+
+**Cách 2: Qua Vercel CLI**
+
+```bash
+# Cài đặt và login
+npm i -g vercel
+vercel login
+
+# Deploy
+vercel --prod
+```
+
 ---
 
 ## 📁 Cấu trúc dự án
@@ -117,7 +146,6 @@ VietNamMiddleClassTransition/
 │   │   ├── HomePage.tsx
 │   │   ├── KnowledgePage.tsx
 │   │   ├── VideoPage.tsx
-│   │   ├── ChatPage.tsx
 │   │   ├── GamePage.tsx
 │   │   ├── AIUsagePage.tsx
 │   │   └── AboutPage.tsx
@@ -157,14 +185,6 @@ VietNamMiddleClassTransition/
 ## 👥 Nhóm thực hiện
 
 Sinh viên môn **Chủ nghĩa xã hội khoa học (MLN131)**
-
----
-
-## 🙏 Credits
-
-Dự án kế thừa cấu trúc và cảm hứng từ:
-- [Light of the Party](https://github.com/) - HCM Ideology Platform
-- [VietInnov-Spark](https://github.com/) - Vietnam Reform History Platform
 
 ---
 
