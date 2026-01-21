@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, ExternalLink, Youtube } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from '../components/AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Video {
   id: string;
@@ -45,6 +50,28 @@ const VideoPage: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
+  useEffect(() => {
+    const videoCards = document.querySelectorAll('.video-card');
+    videoCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 70, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+          },
+          delay: index * 0.15,
+        }
+      );
+    });
+  }, [activeCategory]);
+
   const categories = ['all', ...new Set(videos.map(v => v.category))];
 
   const filteredVideos = activeCategory === 'all' 
@@ -52,22 +79,35 @@ const VideoPage: React.FC = () => {
     : videos.filter(v => v.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page">
+      {/* Floating Stars */}
+      {[...Array(4)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${20 + i * 18}%`,
+            right: `${3 + i * 2}%`,
+            animationDelay: `${i * 0.6}s`,
+            fontSize: `${14 + i * 5}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <Youtube size={20} />
-            <span className="font-medium">Video giảng dạy</span>
+            <span className="font-medium" style={{ fontFamily: 'var(--font-atkinson)' }}>Video giảng dạy</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Video học tập
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <AnimatedTitle title="VI<b>D</b>EO H<b>Ọ</b>C T<b>Ậ</b>P" />
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6" style={{ fontFamily: 'var(--font-atkinson)' }}>
             Xem trực tiếp các video giảng dạy về tầng lớp trung lưu và Chủ nghĩa xã hội khoa học
           </p>
         </motion.div>
@@ -130,13 +170,10 @@ const VideoPage: React.FC = () => {
         {/* Video Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredVideos.map((video, index) => (
-            <motion.div
+            <div
               key={video.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               onClick={() => setSelectedVideo(video)}
-              className={`bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1 ${
+              className={`video-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1 ${
                 selectedVideo?.id === video.id ? 'ring-2 ring-vietnam-red-500' : ''
               }`}
             >
@@ -162,20 +199,20 @@ const VideoPage: React.FC = () => {
 
               {/* Info */}
               <div className="p-4">
-                <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">
+                <h3 className="font-bold text-gray-900 mb-2 line-clamp-2" style={{ fontFamily: 'var(--font-crimson-pro)' }}>
                   {video.title}
                 </h3>
-                <p className="text-gray-600 text-sm line-clamp-2">
+                <p className="text-gray-600 text-sm line-clamp-2" style={{ fontFamily: 'var(--font-atkinson)' }}>
                   {video.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Placeholder Notice */}
         <div className="mt-12 bg-vietnam-gold-50 border border-vietnam-gold-200 rounded-xl p-6 text-center">
-          <p className="text-vietnam-gold-800">
+          <p className="text-vietnam-gold-800" style={{ fontFamily: 'var(--font-atkinson)' }}>
             💡 <strong>Lưu ý:</strong> Đây là các video mẫu. Bạn có thể thay thế bằng các video YouTube thực tế 
             bằng cách cập nhật <code className="bg-vietnam-gold-100 px-2 py-0.5 rounded">youtubeId</code> trong mã nguồn.
           </p>

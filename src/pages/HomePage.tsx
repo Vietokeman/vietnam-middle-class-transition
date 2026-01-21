@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Users, BookOpen, Target, Youtube, MessageCircle, Gamepad2, ArrowRight, Star } from 'lucide-react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from '../components/AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HomePage: React.FC = () => {
   const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  // GSAP scroll-triggered animations from Project-1848
+  useEffect(() => {
+    const cards = gsap.utils.toArray<HTMLElement>('.feature-card');
+    cards.forEach((card) => {
+      gsap.fromTo(card, {
+        opacity: 0,
+        y: 60,
+        scale: 0.95,
+      }, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
 
   const features = [
     {
@@ -75,19 +107,24 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="mb-6">
-              <Star className="w-16 h-16 mx-auto text-vietnam-gold-500 animate-pulse" fill="currentColor" />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Star className="w-16 h-16 mx-auto text-vietnam-gold-500" fill="currentColor" />
+              </motion.div>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Tầng lớp Trung lưu
-              <span className="block text-vietnam-gold-400">Việt Nam</span>
-            </h1>
+            <AnimatedTitle
+              title="T<b>Ầ</b>NG LỚ<b>P</b> TRUNG L<b>Ư</b>U <br /> VI<b>Ệ</b>T N<b>A</b>M"
+              containerClass="mb-6"
+            />
             
-            <p className="text-xl md:text-2xl text-white/90 mb-4 font-light">
+            <p className="text-xl md:text-2xl text-white/90 mb-4 font-light" style={{ fontFamily: 'var(--font-atkinson)' }}>
               Trong Kỷ Nguyên Vươn Mình của Dân Tộc
             </p>
             
-            <p className="text-lg text-white/70 max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-white/70 max-w-3xl mx-auto mb-8" style={{ fontFamily: 'var(--font-atkinson)' }}>
               Nghiên cứu vai trò của tầng lớp trung lưu trong bối cảnh phát triển 
               kinh tế thị trường định hướng XHCN - Dựa trên Chương 5: Cơ cấu xã hội giai cấp 
               trong thời kỳ quá độ lên Chủ nghĩa xã hội.
@@ -180,13 +217,7 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+              <div key={index} className="feature-card">
                 <Link
                   to={feature.link}
                   className="block bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 border border-gray-100 group"
@@ -194,16 +225,16 @@ const HomePage: React.FC = () => {
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${feature.color} text-white flex items-center justify-center mb-4`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-vietnam-red-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-vietnam-red-600 transition-colors" style={{ fontFamily: 'var(--font-crimson-pro)' }}>
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">{feature.description}</p>
+                  <p className="text-gray-600 mb-4" style={{ fontFamily: 'var(--font-atkinson)' }}>{feature.description}</p>
                   <div className="flex items-center text-vietnam-red-600 font-medium">
                     Khám phá
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -52,9 +52,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Geist", "Inter", "system-ui", "sans-serif"],
-        serif: ["Playfair Display", "Georgia", "serif"],
+        sans: ["Atkinson Hyperlegible", "Inter", "system-ui", "sans-serif"],
+        display: ["Crimson Pro", "Geist", "Inter", "system-ui", "sans-serif"],
+        serif: ["Crimson Pro", "Playfair Display", "Georgia", "serif"],
+        crimson: ["Crimson Pro", "serif"],
+        atkinson: ["Atkinson Hyperlegible", "sans-serif"],
       },
       animation: {
         marquee: "marquee 40s linear infinite",

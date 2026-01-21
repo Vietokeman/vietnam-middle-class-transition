@@ -8,6 +8,9 @@
    Vietnam Red & Gold Color Palette
    =================================== */
 
+/* Google Fonts for better Vietnamese diacritic support */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
 /* Fix font rendering for Vietnamese diacritics */
 * {
   -webkit-font-smoothing: antialiased;
@@ -18,6 +21,7 @@
 body {
   font-feature-settings: "kern" 1;
   font-kerning: normal;
+  font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @keyframes float {
@@ -58,6 +62,10 @@ body {
   --middle-blue: #1e40af;
   --middle-green: #15803d;
   --middle-amber: #d97706;
+
+  /* Fonts from Project-1848 */
+  --font-crimson-pro: 'Crimson Pro', serif;
+  --font-atkinson: 'Atkinson Hyperlegible', sans-serif;
 
   /* Semantic colors */
   --background: linear-gradient(
@@ -103,7 +111,7 @@ body {
     scroll-behavior: smooth;
   }
 
-  /* Base Typography - Vietnamese optimized */
+  /* Base Typography - Vietnamese optimized with Crimson Pro */
   h1,
   h2,
   h3,
@@ -112,6 +120,7 @@ body {
   h6 {
     font-weight: 700;
     line-height: 1.3;
+    font-family: var(--font-crimson-pro);
   }
 
   h1 {
@@ -128,6 +137,28 @@ body {
 }
 
 @layer components {
+  /* AnimatedTitle from Project-1848 */
+  .animated-title {
+    @apply flex flex-col gap-1 text-4xl uppercase leading-[.95] text-white sm:px-10 md:text-[3.5rem];
+  }
+
+  .animated-word {
+    @apply font-black opacity-0;
+    font-family: var(--font-crimson-pro);
+    transform: translate3d(10px, 24px, -60px) rotateY(20deg) rotateX(-30deg);
+    transform-origin: 50% 50% -150px !important;
+    will-change: opacity, transform;
+  }
+
+  .special-font {
+    font-family: var(--font-crimson-pro);
+    font-weight: 900;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
   /* Vietnam Flag Button */
   .btn-vietnam {
     @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300;
@@ -216,6 +247,52 @@ body {
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #ac0705, #C9A227);
+  }
+
+  /* Vietnamese pattern overlay - from LightOfTheParty */
+  .vn-pattern-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Floating stars animation */
+  .floating-star {
+    position: absolute;
+    color: #FFD700;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+    animation: floatStar 6s ease-in-out infinite, spinStar 8s linear infinite;
+  }
+
+  @keyframes floatStar {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes spinStar {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Vietnam page background - Deep red gradient */
+  .bg-vietnam-page {
+    background: linear-gradient(135deg, #B22222 0%, #d32f2f 30%, #ac0705 70%, #8b1a1a 100%);
+    position: relative;
+  }
+
+  .bg-vietnam-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   /* Grain Texture Overlay */

@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Users, Lightbulb, GraduationCap, Star, Heart, BookOpen, Rocket } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from '../components/AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutPage: React.FC = () => {
+  useEffect(() => {
+    const goalCards = document.querySelectorAll('.goal-card');
+    goalCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+          },
+          delay: index * 0.1,
+        }
+      );
+    });
+
+    const reasonCards = document.querySelectorAll('.reason-card');
+    reasonCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+          },
+          delay: index * 0.15,
+        }
+      );
+    });
+  }, []);
+
   const projectGoals = [
     {
       icon: <BookOpen className="w-8 h-8" />,
@@ -47,22 +93,35 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page">
+      {/* Floating Stars */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${12 + i * 16}%`,
+            left: `${4 + i * 2}%`,
+            animationDelay: `${i * 0.5}s`,
+            fontSize: `${14 + i * 4}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-vietnam-red-100 text-vietnam-red-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <Target size={20} />
-            <span className="font-medium">Giới thiệu dự án</span>
+            <span className="font-medium" style={{ fontFamily: 'var(--font-atkinson)' }}>Giới thiệu dự án</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Về dự án này
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <AnimatedTitle title="V<b>Ề</b> D<b>Ự</b> Á<b>N</b> N<b>À</b>Y" />
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6" style={{ fontFamily: 'var(--font-atkinson)' }}>
             Tìm hiểu lý do và mục tiêu của dự án "Tầng lớp trung lưu Việt Nam trong kỷ nguyên vươn mình"
           </p>
         </motion.div>
@@ -104,20 +163,20 @@ const AboutPage: React.FC = () => {
           transition={{ delay: 0.3 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center" style={{ fontFamily: 'var(--font-crimson-pro)' }}>
             Đáp ứng tiêu chí đánh giá
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectGoals.map((goal, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                className="goal-card bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
               >
                 <div className="w-14 h-14 bg-gradient-to-r from-vietnam-red-100 to-vietnam-gold-100 rounded-xl flex items-center justify-center text-vietnam-red-600 mb-4">
                   {goal.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{goal.title}</h3>
-                <p className="text-gray-600 text-sm">{goal.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2" style={{ fontFamily: 'var(--font-crimson-pro)' }}>{goal.title}</h3>
+                <p className="text-gray-600 text-sm" style={{ fontFamily: 'var(--font-atkinson)' }}>{goal.description}</p>
               </div>
             ))}
           </div>
@@ -130,7 +189,7 @@ const AboutPage: React.FC = () => {
           transition={{ delay: 0.4 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2" style={{ fontFamily: 'var(--font-crimson-pro)' }}>
             <Heart className="text-vietnam-red-500" />
             Lý do thực hiện dự án
           </h2>
@@ -139,10 +198,10 @@ const AboutPage: React.FC = () => {
             {reasons.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-vietnam-gold-500"
+                className="reason-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-vietnam-gold-500"
               >
-                <h3 className="font-bold text-gray-900 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
+                <h3 className="font-bold text-gray-900 mb-2" style={{ fontFamily: 'var(--font-crimson-pro)' }}>{item.question}</h3>
+                <p className="text-gray-600" style={{ fontFamily: 'var(--font-atkinson)' }}>{item.answer}</p>
               </div>
             ))}
           </div>

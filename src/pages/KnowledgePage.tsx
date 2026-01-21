@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, TrendingUp, Users, Target, ArrowRight, Star, Quote } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from '../components/AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const KnowledgePage: React.FC = () => {
+  useEffect(() => {
+    const sections = document.querySelectorAll('.knowledge-section');
+    sections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 80, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          delay: index * 0.1,
+        }
+      );
+    });
+  }, []);
+
   const sections = [
     {
       id: 'part1',
@@ -102,22 +130,35 @@ const KnowledgePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-br from-red-50 via-yellow-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 bg-vietnam-page">
+      {/* Floating Stars */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${15 + i * 15}%`,
+            left: `${5 + i * 3}%`,
+            animationDelay: `${i * 0.5}s`,
+            fontSize: `${16 + i * 4}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30 px-4 py-2 rounded-full mb-4">
             <BookOpen size={20} />
-            <span className="font-medium">Tóm tắt kiến thức</span>
+            <span className="font-medium" style={{ fontFamily: 'var(--font-atkinson)' }}>Tóm tắt kiến thức</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Tầng lớp Trung lưu Việt Nam
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <AnimatedTitle title="T<b>Ầ</b>NG LỚ<b>P</b> TRUNG L<b>Ư</b>U <br /> VI<b>Ệ</b>T N<b>A</b>M" />
+          <p className="text-lg text-white/80 max-w-3xl mx-auto mt-6" style={{ fontFamily: 'var(--font-atkinson)' }}>
             Nghiên cứu theo Chương 5: Cơ cấu xã hội - giai cấp trong thời kỳ quá độ lên Chủ nghĩa xã hội
           </p>
         </motion.div>
@@ -149,29 +190,26 @@ const KnowledgePage: React.FC = () => {
         {/* Main Content */}
         <div className="space-y-8">
           {sections.map((section, sectionIndex) => (
-            <motion.div
+            <div
               key={section.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * sectionIndex }}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden"
+              className="knowledge-section bg-white rounded-2xl shadow-xl overflow-hidden"
             >
               {/* Section Header */}
               <div className={`bg-gradient-to-r ${section.color} text-white p-6`}>
-                <h2 className="text-2xl font-bold">{section.title}</h2>
+                <h2 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-crimson-pro)' }}>{section.title}</h2>
               </div>
 
               {/* Section Content */}
               <div className="p-6 space-y-6">
                 {section.content.map((item, itemIndex) => (
                   <div key={itemIndex}>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2" style={{ fontFamily: 'var(--font-crimson-pro)' }}>
                       <Star className="w-5 h-5 text-vietnam-gold-500" fill="currentColor" />
                       {item.heading}
                     </h3>
                     <ul className="space-y-2 ml-7">
                       {item.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="flex items-start gap-2 text-gray-700">
+                        <li key={pointIndex} className="flex items-start gap-2 text-gray-700" style={{ fontFamily: 'var(--font-atkinson)' }}>
                           <span className="w-1.5 h-1.5 bg-vietnam-red-500 rounded-full mt-2 flex-shrink-0" />
                           {point}
                         </li>
@@ -180,7 +218,7 @@ const KnowledgePage: React.FC = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

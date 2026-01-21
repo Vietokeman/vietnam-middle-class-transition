@@ -11,15 +11,16 @@ const HomePage = lazy(() => import('@/pages/HomePage'));
 const KnowledgePage = lazy(() => import('@/pages/KnowledgePage'));
 const VideoPage = lazy(() => import('@/pages/VideoPage'));
 const GamePage = lazy(() => import('@/pages/GamePage'));
+const LibraryPage = lazy(() => import('@/pages/LibraryPage'));
 const AIUsagePage = lazy(() => import('@/pages/AIUsagePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 
 // Loading fallback component
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-yellow-50 to-white">
+  <div className="min-h-screen flex items-center justify-center bg-vietnam-page">
     <div className="text-center">
-      <div className="w-12 h-12 border-4 border-vietnam-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-      <p className="text-gray-600">Đang tải...</p>
+      <div className="w-12 h-12 border-4 border-vietnam-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+      <p className="text-white/80">Đang tải...</p>
     </div>
   </div>
 );
@@ -121,7 +122,7 @@ const App: React.FC = () => {
         style={{ visibility: showContent ? 'visible' : 'hidden' }}
       >
         <Router>
-          <div className="min-h-screen bg-gradient-to-br from-red-50 via-yellow-50 to-white">
+          <div className="min-h-screen bg-vietnam-page">
             <Header />
 
             <main>
@@ -131,6 +132,7 @@ const App: React.FC = () => {
                   <Route path="/kien-thuc" element={<KnowledgePage />} />
                   <Route path="/video" element={<VideoPage />} />
                   <Route path="/game" element={<GamePage />} />
+                  <Route path="/thu-vien-3d" element={<LibraryPage />} />
                   <Route path="/ai-usage" element={<AIUsagePage />} />
                   <Route path="/about" element={<AboutPage />} />
                 </Routes>
