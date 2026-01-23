@@ -37,7 +37,7 @@ type ItemDef = {
 
 const DEFAULT_IMAGES: ImageItem[] = [
   {
-    src: "https://nghiencuulichsu.com/wp-content/uploads/2015/11/nguyen-ai-quoc.jpg?w=640",
+    src: "https://nghiencuulichsu.com/wp-content/uploads/2015/11/nguyen-ai-quoc.jpg?w=640",x
     alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
   },
   {
@@ -997,7 +997,7 @@ export default function DomeGallery({
                 {/* Card Header */}
                 <div className="bg-gradient-to-r from-[#8B1A1A] to-[#AC0705] px-8 py-6 border-b-4 border-[#FFD700]">
                   <h3 className="text-white font-bold text-3xl text-center tracking-wide">
-                    LỊCH SỬ ĐẢNG CỘNG SẢN VIỆT NAM
+                    TẦNG LỚP TRUNG LƯU VIỆT NAM
                   </h3>
                 </div>
 
