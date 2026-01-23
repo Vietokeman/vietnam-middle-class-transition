@@ -37,7 +37,7 @@ type ItemDef = {
 
 const DEFAULT_IMAGES: ImageItem[] = [
   {
-    src: "https://nghiencuulichsu.com/wp-content/uploads/2015/11/nguyen-ai-quoc.jpg?w=640",x
+    src: "https://nghiencuulichsu.com/wp-content/uploads/2015/11/nguyen-ai-quoc.jpg?w=640",
     alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
   },
   {
