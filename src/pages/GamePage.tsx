@@ -245,28 +245,28 @@ const GamePage: React.FC = () => {
                     onClick={() => handleAnswerSelect(index)}
                     disabled={showResult}
                     className={`w-full text-left p-4 rounded-xl border-2 transition-all ${showResult
-                        ? index === question.correctIndex
-                          ? 'border-green-500 bg-green-50'
-                          : selectedAnswer === index
-                            ? 'border-red-500 bg-red-50'
-                            : 'border-gray-200 bg-gray-50'
+                      ? index === question.correctIndex
+                        ? 'border-green-500 bg-green-50'
                         : selectedAnswer === index
-                          ? 'border-vietnam-red-500 bg-vietnam-red-50'
-                          : 'border-gray-200 hover:border-vietnam-red-300 hover:bg-vietnam-red-50'
+                          ? 'border-red-500 bg-red-50'
+                          : 'border-gray-200 bg-gray-50'
+                      : selectedAnswer === index
+                        ? 'border-vietnam-red-500 bg-vietnam-red-50'
+                        : 'border-gray-200 hover:border-vietnam-red-300 hover:bg-vietnam-red-50'
                       }`}
                   >
                     <div className="flex items-center gap-3">
                       <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${showResult
-                          ? index === question.correctIndex
-                            ? 'bg-green-500 text-white'
-                            : selectedAnswer === index
-                              ? 'bg-red-500 text-white'
-                              : 'bg-gray-200 text-gray-600'
-                          : 'bg-gray-200 text-gray-600'
+                        ? index === question.correctIndex
+                          ? 'bg-green-500 text-white'
+                          : selectedAnswer === index
+                            ? 'bg-red-500 text-white'
+                            : 'bg-gray-200 text-gray-600'
+                        : 'bg-gray-200 text-gray-600'
                         }`}>
                         {String.fromCharCode(65 + index)}
                       </span>
-                      <span className="flex-1">{option}</span>
+                      <span className="flex-1 text-gray-900">{option}</span>
                       {showResult && index === question.correctIndex && (
                         <CheckCircle className="w-6 h-6 text-green-500" />
                       )}
