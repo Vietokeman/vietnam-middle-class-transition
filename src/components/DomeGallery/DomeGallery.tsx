@@ -997,7 +997,7 @@ export default function DomeGallery({
                 {/* Card Header */}
                 <div className="bg-gradient-to-r from-[#8B1A1A] to-[#AC0705] px-8 py-6 border-b-4 border-[#FFD700]">
                   <h3 className="text-white font-bold text-3xl text-center tracking-wide">
-                    LỊCH SỬ ĐẢNG CỘNG SẢN VIỆT NAM
+                    TẦNG LỚP TRUNG LƯU VIỆT NAM
                   </h3>
                 </div>
 

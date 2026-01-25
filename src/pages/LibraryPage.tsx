@@ -16,36 +16,28 @@ export default function LibraryPage() {
   // Historical images for the middle class theme
   const domeImages = [
     {
-      src: "https://media.vietnamplus.vn/images/ed1918d4cf848798286fdbd286ae25b49193a1c5d1fb33e969ef22f27d52ae3d4fa848ce7d2b15dcfa2646bd42731b69a74f6b1bfe70b3203772c7979020cefa/ttxvn-nguyen-ai-quoc.jpg",
-      alt: "Nguyễn Ái Quốc với nhân dân Moskva (Nga) trên đồi Chim Sẻ, trong thời gian tham dự Đại hội lần thứ V Quốc tế cộng sản (17-6/8-7-1924). Ảnh: Tư liệu/TTXVN - Thể hiện tinh thần quốc tế vô sản.",
+      src: "https://bcp.cdnchinhphu.vn/334894974524682240/2023/1/27/do-thi-2-16748034764601049869198.jpg",
+      alt: "Sự phát triển của lực lượng sản xuất: Đô thị hóa và hiện đại hóa tại các thành phố lớn (TP.HCM, Hà Nội) là cơ sở vật chất kỹ thuật cho sự ra đời và phát triển của tầng lớp trung lưu.",
     },
     {
-      src: "https://file.qdnd.vn/data/images/0/2021/05/29/phucthang/06-hcm01.jpg?dpi=150&quality=100&w=575",
-      alt: "Hình ảnh trong chuyến hành trình tìm đường cứu nước của Bác từ ngày 25 đến 30-12-1920, chàng thanh niên yêu nước Nguyễn Ái Quốc tham dự Đại hội lần thứ 18 Đảng Xã hội Pháp ở thành phố Tours với tư cách đại biểu Đông Dương.",
+      src: "https://llct.1cdn.vn/2023/02/20/lyluanchinhtri.vn-home-media-k2-items-cache-_826865d7c58185b88ff2463c28ea3d80_l.jpg",
+      alt: "Nâng cao chất lượng nguồn nhân lực: Tầng lớp trung lưu Việt Nam chú trọng giáo dục và đào tạo, chuyển dịch từ lao động thủ công sang lao động trí óc.",
     },
     {
-      src: "https://media-cdn-v2.laodong.vn/storage/newsportal/2024/3/24/1318919/002.jpg",
-      alt: "Chiến thắng Điện Biên Phủ năm 1954 - Biểu tượng cho sức mạnh của ý chí và tinh thần đoàn kết toàn dân tộc.",
+      src: "https://file.vnua.edu.vn/data/0/images/2020/12/23/tiengviet/2020-2312-cmcn4-0001.jpg",
+      alt: "Cách mạng công nghiệp 4.0: Tầng lớp trung lưu là lực lượng nòng cốt trong việc ứng dụng khoa học công nghệ, thúc đẩy phương thức sản xuất tiên tiến.",
     },
     {
-      src: "https://inkythuatso.com/uploads/thumbnails/800/2023/03/2-hinh-anh-bac-ho-o-chien-khu-inkythuatso-06-09-42-16.jpg",
-      alt: "Hồ Chí Minh với cán bộ, chiến sĩ tại chiến khu Việt Bắc năm 1947 - Thể hiện sự gần gũi với bộ đội và nhân dân.",
+      src: "https://a.tcnnld.vn//Upload/Images/Normal/2025/11/041ac9920c929f241cf51feca2887728-20251118_0803_Kinh-Te-Moi_simple_compose_01kaa7p5yhfz0rtmtpw2n1gnfz.jpg",
+      alt: "Quan hệ sản xuất mới: Sự xuất hiện của các doanh nhân, chuyên gia, và nhân viên văn phòng phản ánh sự đa dạng hóa trong cơ cấu xã hội - giai cấp trong thời kỳ quá độ lên CNXH.",
     },
     {
-      src: "https://tapchigiaothong.qltns.mediacdn.vn/tapchigiaothong.vn/files/Tapchigiay/2021/01/26/bac-ho-0957.jpg",
-      alt: "Đại hội Đại biểu toàn quốc lần thứ III của Đảng (1960) - Đánh dấu bước chuyển sang thời kỳ xây dựng chủ nghĩa xã hội.",
+      src: "https://danviet.ex-cdn.com/files/f1/296231569849192448/2024/9/2/khuyen-mai-giam-gia-truc-tiep-mua-2-tang-1-mua-1-tang-1-ap-dung-cho-hon-600-san-pham-tai-winmart-winmart-win-20240830093603-1725271729431-1725271730389578192199.jpg",
+      alt: "Tiêu dùng và đời sống: Mức sống được nâng cao thể hiện tính ưu việt của chế độ mới, nhưng cũng đặt ra những vấn đề về văn hóa tiêu dùng và phân hóa giàu nghèo cần giải quyết.",
     },
     {
-      src: "https://imgnvsk.vnanet.vn/MediaUpload/Medium/2023/07/21/capture21-15-55-29.png",
-      alt: "Đại hội Đại biểu toàn quốc lần thứ V của Đảng Cộng sản Việt Nam năm 1982 – Đề ra nhiệm vụ ổn định kinh tế - xã hội và mở ra các bước đột phá cải cách 1982–1986.",
-    },
-    {
-      src: "https://th.bing.com/th/id/R.c89bc199a377256fe56dcaf53874b742?rik=XtuJd6brDcL4mA&pid=ImgRaw&r=0",
-      alt: "Tiền Việt Nam năm 1985 – Hình ảnh gắn liền với cải cách giá - lương - tiền, nguyên nhân trực tiếp dẫn tới quyết định đổi mới toàn diện tại Đại hội VI năm 1986.",
-    },
-    {
-      src: "https://file3.qdnd.vn/data/images/0/2022/07/20/tranhuyen/01botruongngoaigiaonguyenmanhcam.jpg?dpi=150&quality=100&w=870",
-      alt: "Việt Nam gia nhập ASEAN năm 1995 – Thành tựu quan trọng của tiến trình đổi mới, mở rộng quan hệ đối ngoại và hội nhập khu vực.",
+      src: "https://s-aicmscdn.vietnamhoinhap.vn/vnhn-media/18/7/20/2_hoi-nhap-toan-cau.jpg",
+      alt: "Hội nhập quốc tế: Tầng lớp trung lưu Việt Nam trong bối cảnh toàn cầu hóa, vừa tiếp thu tinh hoa nhân loại vừa giữ gìn bản sắc dân tộc theo tư tưởng Triết học Mác - Lênin.",
     },
   ];
 
@@ -86,10 +78,10 @@ export default function LibraryPage() {
             <span className="font-medium">Thư viện hình ảnh</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-            Thư viện 3D
+            Triết học Mác - Lênin (MLN131)
           </h1>
           <p className="text-lg text-white/80 max-w-2xl mx-auto mb-6">
-            Khám phá các hình ảnh lịch sử về tiến trình phát triển của Việt Nam qua các thời kỳ
+            Khám phá sự phát triển của Tầng lớp trung lưu Việt Nam dưới góc nhìn Triết học Mác - Lênin
           </p>
         </motion.div>
       </div>
