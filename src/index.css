@@ -843,3 +843,19 @@ main.sphere-main {
 .dg-scroll-lock {
   overflow: hidden !important;
 }
+
+/* ===================================
+   INPUT FIELD FIX
+   Ensure all input fields have visible text
+   =================================== */
+input,
+textarea,
+select {
+  color: #1a1a1a !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+}
+

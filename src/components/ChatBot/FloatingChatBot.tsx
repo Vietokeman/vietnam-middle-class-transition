@@ -173,11 +173,10 @@ const FloatingChatBot: React.FC = () => {
                       className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-                          message.role === 'user'
+                        className={`max-w-[85%] rounded-2xl px-4 py-3 ${message.role === 'user'
                             ? 'bg-gradient-to-r from-vietnam-red-600 to-vietnam-red-500 text-white'
                             : 'bg-white shadow-md text-gray-800 border border-gray-100'
-                        }`}
+                          }`}
                       >
                         <div
                           className="text-sm leading-relaxed markdown-content"
@@ -214,7 +213,7 @@ const FloatingChatBot: React.FC = () => {
                       onChange={(e) => setInput(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Hỏi về tầng lớp trung lưu..."
-                      className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-vietnam-red-500 focus:ring-2 focus:ring-vietnam-red-500/20 outline-none transition text-sm"
+                      className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-vietnam-red-500 focus:ring-2 focus:ring-vietnam-red-500/20 outline-none transition text-sm text-gray-900"
                       disabled={isLoading}
                     />
                     <button

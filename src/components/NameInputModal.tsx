@@ -107,7 +107,7 @@ const NameInputModal: React.FC<NameInputModalProps> = ({
                                     maxLength={50}
                                     autoFocus
                                     disabled={isSubmitting}
-                                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-vietnam-gold-500 transition ${error ? 'border-red-500' : 'border-gray-300'
+                                    className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-vietnam-gold-500 transition text-gray-900 ${error ? 'border-red-500' : 'border-gray-300'
                                         } disabled:opacity-50 disabled:cursor-not-allowed`}
                                 />
                                 {error && (
