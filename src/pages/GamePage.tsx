@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, CheckCircle, XCircle, RotateCcw, Trophy, Star } from 'lucide-react';
+import { Gamepad2, CheckCircle, XCircle, RotateCcw, Trophy, Star, Save, Award } from 'lucide-react';
+import NameInputModal from '@/components/NameInputModal';
+import Leaderboard from '@/components/Leaderboard';
+import { submitQuizScore } from '@/services/quizService';
 
 interface Question {
   id: number;
@@ -107,11 +110,17 @@ const GamePage: React.FC = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [answers, setAnswers] = useState<boolean[]>([]);
 
+  // Firebase-related state
+  const [showNameModal, setShowNameModal] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [scoreSubmitted, setScoreSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
   const handleAnswerSelect = (index: number) => {
     if (showResult) return;
     setSelectedAnswer(index);
     setShowResult(true);
-    
+
     const isCorrect = index === quizQuestions[currentQuestion].correctIndex;
     if (isCorrect) {
       setScore(score + 1);
@@ -136,28 +145,52 @@ const GamePage: React.FC = () => {
     setScore(0);
     setQuizCompleted(false);
     setAnswers([]);
+    setScoreSubmitted(false);
+    setSubmitError('');
+  };
+
+  const handleSaveScore = () => {
+    setShowNameModal(true);
+  };
+
+  const handleSubmitScore = async (playerName: string) => {
+    try {
+      await submitQuizScore(playerName, score, quizQuestions.length, answers);
+      setScoreSubmitted(true);
+      setSubmitError('');
+      // Show success message
+      console.log('✅ Điểm đã được lưu thành công!');
+    } catch (error) {
+      console.error('Error submitting score:', error);
+      setSubmitError('Không thể lưu điểm. Vui lòng kiểm tra kết nối.');
+      throw error; // Re-throw to let modal handle it
+    }
+  };
+
+  const handleViewLeaderboard = () => {
+    setShowLeaderboard(true);
   };
 
   const question = quizQuestions[currentQuestion];
 
   return (
     <div className="min-h-screen pt-20 pb-16 bg-vietnam-page relative">
-        {/* Floating Stars */}
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="floating-star hidden md:block"
-            style={{
-              top: `${10 + i * 12}%`,
-              left: i % 2 === 0 ? `${4 + i}%` : 'auto',
-              right: i % 2 === 1 ? `${4 + i}%` : 'auto',
-              animationDelay: `${i * 0.4}s`,
-              fontSize: `${12 + i * 3}px`
-            }}
-          >
-            ★
-          </div>
-        ))}
+      {/* Floating Stars */}
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="floating-star hidden md:block"
+          style={{
+            top: `${10 + i * 12}%`,
+            left: i % 2 === 0 ? `${4 + i}%` : 'auto',
+            right: i % 2 === 1 ? `${4 + i}%` : 'auto',
+            animationDelay: `${i * 0.4}s`,
+            fontSize: `${12 + i * 3}px`
+          }}
+        >
+          ★
+        </div>
+      ))}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -211,28 +244,26 @@ const GamePage: React.FC = () => {
                     key={index}
                     onClick={() => handleAnswerSelect(index)}
                     disabled={showResult}
-                    className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
-                      showResult
+                    className={`w-full text-left p-4 rounded-xl border-2 transition-all ${showResult
                         ? index === question.correctIndex
                           ? 'border-green-500 bg-green-50'
                           : selectedAnswer === index
-                          ? 'border-red-500 bg-red-50'
-                          : 'border-gray-200 bg-gray-50'
+                            ? 'border-red-500 bg-red-50'
+                            : 'border-gray-200 bg-gray-50'
                         : selectedAnswer === index
-                        ? 'border-vietnam-red-500 bg-vietnam-red-50'
-                        : 'border-gray-200 hover:border-vietnam-red-300 hover:bg-vietnam-red-50'
-                    }`}
+                          ? 'border-vietnam-red-500 bg-vietnam-red-50'
+                          : 'border-gray-200 hover:border-vietnam-red-300 hover:bg-vietnam-red-50'
+                      }`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                        showResult
+                      <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${showResult
                           ? index === question.correctIndex
                             ? 'bg-green-500 text-white'
                             : selectedAnswer === index
-                            ? 'bg-red-500 text-white'
-                            : 'bg-gray-200 text-gray-600'
+                              ? 'bg-red-500 text-white'
+                              : 'bg-gray-200 text-gray-600'
                           : 'bg-gray-200 text-gray-600'
-                      }`}>
+                        }`}>
                         {String.fromCharCode(65 + index)}
                       </span>
                       <span className="flex-1">{option}</span>
@@ -300,9 +331,8 @@ const GamePage: React.FC = () => {
               {answers.map((correct, index) => (
                 <div
                   key={index}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    correct ? 'bg-green-500' : 'bg-red-500'
-                  } text-white text-sm font-bold`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center ${correct ? 'bg-green-500' : 'bg-red-500'
+                    } text-white text-sm font-bold`}
                 >
                   {index + 1}
                 </div>
@@ -325,16 +355,68 @@ const GamePage: React.FC = () => {
               )}
             </div>
 
-            <button
-              onClick={handleRestart}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-vietnam-red-600 to-vietnam-gold-500 text-white font-bold rounded-full hover:opacity-90 transition"
-            >
-              <RotateCcw className="w-5 h-5" />
-              Chơi lại
-            </button>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={handleViewLeaderboard}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-vietnam-gold-500 text-vietnam-gold-600 font-bold rounded-full hover:bg-vietnam-gold-50 transition"
+              >
+                <Award className="w-5 h-5" />
+                Xem bảng xếp hạng
+              </button>
+
+              {!scoreSubmitted ? (
+                <button
+                  onClick={handleSaveScore}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-full hover:opacity-90 transition"
+                >
+                  <Save className="w-5 h-5" />
+                  Lưu điểm
+                </button>
+              ) : (
+                <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-100 text-green-700 font-bold rounded-full">
+                  <CheckCircle className="w-5 h-5" />
+                  Đã lưu điểm
+                </div>
+              )}
+
+              <button
+                onClick={handleRestart}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-vietnam-red-600 to-vietnam-gold-500 text-white font-bold rounded-full hover:opacity-90 transition"
+              >
+                <RotateCcw className="w-5 h-5" />
+                Chơi lại
+              </button>
+            </div>
+
+            {/* Error Message */}
+            {submitError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm text-center"
+              >
+                {submitError}
+              </motion.div>
+            )}
           </motion.div>
         )}
       </div>
+
+      {/* Modals */}
+      <NameInputModal
+        isOpen={showNameModal}
+        onClose={() => setShowNameModal(false)}
+        onSubmit={handleSubmitScore}
+        score={score}
+        totalQuestions={quizQuestions.length}
+      />
+
+      <Leaderboard
+        isOpen={showLeaderboard}
+        onClose={() => setShowLeaderboard(false)}
+        currentScore={scoreSubmitted ? score : undefined}
+      />
     </div>
   );
 };

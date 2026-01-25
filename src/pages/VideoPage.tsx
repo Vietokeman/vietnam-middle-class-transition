@@ -74,8 +74,8 @@ const VideoPage: React.FC = () => {
 
   const categories = ['all', ...new Set(videos.map(v => v.category))];
 
-  const filteredVideos = activeCategory === 'all' 
-    ? videos 
+  const filteredVideos = activeCategory === 'all'
+    ? videos
     : videos.filter(v => v.category === activeCategory);
 
   return (
@@ -118,11 +118,10 @@ const VideoPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full transition-all ${
-                activeCategory === cat
-                  ? 'bg-vietnam-red-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
-              }`}
+              className={`px-4 py-2 rounded-full transition-all ${activeCategory === cat
+                ? 'bg-vietnam-red-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
             >
               {cat === 'all' ? 'Tất cả' : cat}
             </button>
@@ -173,9 +172,8 @@ const VideoPage: React.FC = () => {
             <div
               key={video.id}
               onClick={() => setSelectedVideo(video)}
-              className={`video-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1 ${
-                selectedVideo?.id === video.id ? 'ring-2 ring-vietnam-red-500' : ''
-              }`}
+              className={`video-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1 ${selectedVideo?.id === video.id ? 'ring-2 ring-vietnam-red-500' : ''
+                }`}
             >
               {/* Thumbnail */}
               <div className="relative aspect-video bg-gray-200">
@@ -213,7 +211,7 @@ const VideoPage: React.FC = () => {
         {/* Placeholder Notice */}
         <div className="mt-12 bg-vietnam-gold-50 border border-vietnam-gold-200 rounded-xl p-6 text-center">
           <p className="text-vietnam-gold-800" style={{ fontFamily: 'var(--font-atkinson)' }}>
-            💡 <strong>Lưu ý:</strong> Đây là các video mẫu. Bạn có thể thay thế bằng các video YouTube thực tế 
+            💡 <strong>Lưu ý:</strong> Đây là các video mẫu. Bạn có thể thay thế bằng các video YouTube thực tế
             bằng cách cập nhật <code className="bg-vietnam-gold-100 px-2 py-0.5 rounded">youtubeId</code> trong mã nguồn.
           </p>
         </div>
