@@ -20,14 +20,14 @@ const videos: Video[] = [
     id: '1',
     title: 'Kinh tế thị trường định hướng XHCN',
     description: 'Giải thích về mô hình kinh tế thị trường định hướng xã hội chủ nghĩa tại Việt Nam',
-    youtubeId: 'dQw4w9WgXcQ', // Placeholder - thay bằng video thật
+    youtubeId: 'oiztBU2NiZo',
     category: 'Lý luận',
   },
   {
     id: '2',
     title: 'Đổi mới 1986 - Bước ngoặt lịch sử',
     description: 'Nhìn lại công cuộc Đổi mới và sự hình thành tầng lớp trung lưu',
-    youtubeId: 'dQw4w9WgXcQ',
+    youtubeId: 'VK6PsKXHMa0',
     category: 'Lịch sử',
   },
   {
@@ -41,7 +41,7 @@ const videos: Video[] = [
     id: '4',
     title: 'Kỷ nguyên vươn mình của dân tộc',
     description: 'Định hướng phát triển theo tinh thần Đại hội XIV của Đảng',
-    youtubeId: 'dQw4w9WgXcQ',
+    youtubeId: 'Q_ZThhVsykM',
     category: 'Đương đại',
   },
 ];
@@ -211,8 +211,8 @@ const VideoPage: React.FC = () => {
         {/* Placeholder Notice */}
         <div className="mt-12 bg-vietnam-gold-50 border border-vietnam-gold-200 rounded-xl p-6 text-center">
           <p className="text-vietnam-gold-800" style={{ fontFamily: 'var(--font-atkinson)' }}>
-            💡 <strong>Lưu ý:</strong> Đây là các video mẫu. Bạn có thể thay thế bằng các video YouTube thực tế
-            bằng cách cập nhật <code className="bg-vietnam-gold-100 px-2 py-0.5 rounded">youtubeId</code> trong mã nguồn.
+            {/* 💡 <strong>Lưu ý:</strong> Đây là các video mẫu. Bạn có thể thay thế bằng các video YouTube thực tế
+            bằng cách cập nhật <code className="bg-vietnam-gold-100 px-2 py-0.5 rounded">youtubeId</code> trong mã nguồn. */}
           </p>
         </div>
       </div>
