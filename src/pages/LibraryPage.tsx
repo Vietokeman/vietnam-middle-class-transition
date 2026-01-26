@@ -93,22 +93,20 @@ export default function LibraryPage() {
         </span>
         <div className="flex gap-2 bg-vietnam-red-800/90 p-1 rounded-full border-2 border-vietnam-gold-500/40 shadow-lg backdrop-blur-md">
           <button
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
-              mode === "dome"
-                ? "bg-gradient-to-r from-vietnam-gold-500 to-vietnam-gold-600 text-vietnam-red-900 shadow-lg"
-                : "bg-transparent text-vietnam-gold-400 hover:bg-vietnam-gold-500/10"
-            }`}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${mode === "dome"
+              ? "bg-gradient-to-r from-vietnam-gold-500 to-vietnam-gold-600 text-vietnam-red-900 shadow-lg"
+              : "bg-transparent text-vietnam-gold-400 hover:bg-vietnam-gold-500/10"
+              }`}
             onClick={() => setMode("dome")}
           >
             <FaCube className="text-sm" />
             <span>Tròn</span>
           </button>
           <button
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
-              mode === "circular"
-                ? "bg-gradient-to-r from-vietnam-gold-500 to-vietnam-gold-600 text-vietnam-red-900 shadow-lg"
-                : "bg-transparent text-vietnam-gold-400 hover:bg-vietnam-gold-500/10"
-            }`}
+            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full transition-all duration-300 ${mode === "circular"
+              ? "bg-gradient-to-r from-vietnam-gold-500 to-vietnam-gold-600 text-vietnam-red-900 shadow-lg"
+              : "bg-transparent text-vietnam-gold-400 hover:bg-vietnam-gold-500/10"
+              }`}
             onClick={() => setMode("circular")}
           >
             <FaImages className="text-sm" />

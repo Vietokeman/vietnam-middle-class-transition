@@ -30,13 +30,13 @@ const videos: Video[] = [
     youtubeId: 'VK6PsKXHMa0',
     category: 'Lịch sử',
   },
-  {
-    id: '3',
-    title: 'Tầng lớp trung lưu và phát triển bền vững',
-    description: 'Vai trò của tầng lớp trung lưu trong phát triển kinh tế-xã hội',
-    youtubeId: 'dQw4w9WgXcQ',
-    category: 'Phân tích',
-  },
+  // {
+  //   id: '3',
+  //   title: 'Tầng lớp trung lưu và phát triển bền vững',
+  //   description: 'Vai trò của tầng lớp trung lưu trong phát triển kinh tế-xã hội',
+  //   youtubeId: 'dQw4w9WgXcQ',
+  //   category: 'Phân tích',
+  // },
   {
     id: '4',
     title: 'Kỷ nguyên vươn mình của dân tộc',
