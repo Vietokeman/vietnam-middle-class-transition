@@ -5,3 +5,4 @@ export { default as GamePage } from './GamePage';
 export { default as LibraryPage } from './LibraryPage';
 export { default as AIUsagePage } from './AIUsagePage';
 export { default as AboutPage } from './AboutPage';
+export { default as ReferencesPage } from './ReferencesPage';

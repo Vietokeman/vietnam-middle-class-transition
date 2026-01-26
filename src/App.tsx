@@ -14,6 +14,7 @@ const GamePage = lazy(() => import('@/pages/GamePage'));
 const LibraryPage = lazy(() => import('@/pages/LibraryPage'));
 const AIUsagePage = lazy(() => import('@/pages/AIUsagePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const ReferencesPage = lazy(() => import('@/pages/ReferencesPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -134,6 +135,7 @@ const App: React.FC = () => {
                   <Route path="/game" element={<GamePage />} />
                   <Route path="/thu-vien-3d" element={<LibraryPage />} />
                   <Route path="/ai-usage" element={<AIUsagePage />} />
+                  <Route path="/tai-lieu-tham-chieu" element={<ReferencesPage />} />
                   <Route path="/about" element={<AboutPage />} />
                 </Routes>
               </Suspense>

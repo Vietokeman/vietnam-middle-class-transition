@@ -207,45 +207,6 @@ const AboutPage: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Team Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-gradient-to-r from-vietnam-red-600 to-vietnam-gold-500 rounded-2xl p-8 text-white text-center"
-        >
-          <h2 className="text-2xl font-bold mb-4">Nhóm thực hiện</h2>
-          <p className="text-white/90 mb-6">
-            Sinh viên môn Chủ nghĩa xã hội khoa học (MLN131)
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['Thành viên 1', 'Thành viên 2', 'Thành viên 3', 'Thành viên 4'].map((member, index) => (
-              <div key={index} className="bg-white/10 rounded-lg p-4">
-                <div className="w-16 h-16 bg-white/20 rounded-full mx-auto mb-2 flex items-center justify-center">
-                  <Users className="w-8 h-8" />
-                </div>
-                <p className="font-medium">{member}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-sm text-white/70">
-            * Cập nhật tên thành viên tại src/pages/AboutPage.tsx
-          </p>
-        </motion.div>
-
-        {/* Footer Note */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8 text-center text-gray-500 text-sm"
-        >
-          <p>
-            Dự án kế thừa cấu trúc từ{' '}
-            <span className="font-medium">Light of the Party</span> và{' '}
-            <span className="font-medium">VietInnov-Spark</span>
-          </p>
-        </motion.div>
       </div>
     </div>
   );

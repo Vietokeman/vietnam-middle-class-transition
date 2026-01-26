@@ -257,11 +257,11 @@ const HomePage: React.FC = () => {
               chiếm trên 50% dân số - Thước đo thành công của công cuộc xây dựng CNXH.
             </p>
             <Link
-              to="/chat"
+              to="/kien-thuc"
               className="inline-flex items-center gap-2 px-8 py-4 bg-vietnam-gold-500 text-gray-900 font-bold rounded-full hover:bg-vietnam-gold-400 transition-all hover:scale-105 shadow-gold-lg"
             >
               <MessageCircle className="w-5 h-5" />
-              Hỏi AI trợ lý ngay
+              Khám phá kiến thức ngay
             </Link>
           </motion.div>
         </div>
