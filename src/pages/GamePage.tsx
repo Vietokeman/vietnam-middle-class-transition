@@ -13,96 +13,259 @@ interface Question {
   explanation: string;
 }
 
-const quizQuestions: Question[] = [
+// All 20 questions - 15 will be randomly selected for each quiz
+const allQuestions: Question[] = [
   {
     id: 1,
-    question: 'Theo giáo trình CNXH Khoa học, tầng lớp trung lưu thuộc nhóm nào?',
+    question: 'Theo giáo trình, bên cạnh các giai cấp cơ bản, sự biến đổi cơ cấu xã hội ở Việt Nam trong thời kỳ quá độ đã làm xuất hiện những tầng lớp xã hội mới nào?',
     options: [
-      'Giai cấp công nhân',
-      'Giai cấp nông dân',
-      'Tầng lớp xã hội mới',
-      'Giai cấp tư sản',
+      'Tầng lớp địa chủ và tư sản mại bản.',
+      'Tầng lớp doanh nhân, tiểu chủ, tầng lớp những người giàu có và trung lưu.',
+      'Tầng lớp quý tộc mới và thương nhân.',
+      'Tầng lớp công nhân kỹ thuật cao và nông dân tập thể.',
     ],
-    correctIndex: 2,
-    explanation: 'Trong giáo trình CNXH Khoa học, tầng lớp trung lưu được xếp vào nhóm các "tầng lớp xã hội mới" - những người nằm ở vị trí trung gian trong thang bậc xã hội.',
+    correctIndex: 1,
+    explanation: 'Trong thời kỳ quá độ, cơ cấu xã hội - giai cấp biến đổi đa dạng, xuất hiện sự tồn tại và phát triển của các tầng lớp xã hội mới như: "tầng lớp doanh nhân, tiểu chủ, tầng lớp những người giàu có và trung lưu trong xã hội".',
   },
   {
     id: 2,
-    question: 'Tỷ lệ tầng lớp trung lưu Việt Nam năm 2018 theo World Bank là bao nhiêu?',
-    options: ['7.7%', '16.3%', '26%', '50%'],
-    correctIndex: 1,
-    explanation: 'Theo báo cáo World Bank, năm 2018 tầng lớp trung lưu Việt Nam chiếm 16.3% dân số, tăng đáng kể so với 7.7% năm 2010.',
+    question: 'Đội ngũ Doanh nhân (một bộ phận nòng cốt của tầng lớp trung lưu) có vai trò gì trong sự nghiệp phát triển kinh tế - xã hội?',
+    options: [
+      'Chỉ tập trung vào việc làm giàu cho cá nhân và gia đình.',
+      'Là lực lượng chính trị duy nhất lãnh đạo đất nước.',
+      'Phát triển kinh tế, giải quyết việc làm, tham gia giải quyết các vấn đề an sinh xã hội, xóa đói, giảm nghèo.',
+      'Thay thế hoàn toàn vai trò của nhà nước trong quản lý kinh tế.',
+    ],
+    correctIndex: 2,
+    explanation: 'Đội ngũ doanh nhân đóng góp tích cực vào việc thực hiện chiến lược phát triển kinh tế - xã hội, "giải quyết việc làm cho người lao động và tham gia giải quyết các vấn đề an sinh xã hội, xóa đói, giảm nghèo".',
   },
   {
     id: 3,
-    question: 'Sự kiện nào đánh dấu bước ngoặt cho sự hình thành tầng lớp trung lưu Việt Nam?',
+    question: 'Xu hướng "trung lưu hóa" về mức sống của giai cấp công nhân hiện đại ở các nước tư bản phát triển được biểu hiện như thế nào?',
     options: [
-      'Thống nhất đất nước 1975',
-      'Đổi mới 1986',
-      'Gia nhập WTO 2007',
-      'Đại hội XIV',
+      'Công nhân nắm toàn bộ tư liệu sản xuất và làm chủ nhà máy.',
+      'Công nhân không còn bị bóc lột giá trị thặng dư.',
+      'Công nhân chuyển hoàn toàn thành giai cấp tư sản.',
+      'Một bộ phận công nhân sở hữu cổ phần, tư liệu sản xuất và có mức sống được cải thiện, nhưng vẫn bị phụ thuộc vào giới chủ.',
     ],
-    correctIndex: 1,
-    explanation: 'Đại hội VI (1986) với quyết định Đổi mới, chấp nhận nền kinh tế thị trường định hướng XHCN, đã phá vỡ cơ cấu xã hội "thuần nhất" cũ và tạo điều kiện cho sự xuất hiện của tầng lớp trung lưu.',
+    correctIndex: 3,
+    explanation: 'Một bộ phận công nhân đã tham gia vào sở hữu một lượng tư liệu sản xuất thông qua chế độ cổ phần hóa. Về mặt hình thức, họ có thể được "trung lưu hóa" về mức sống, nhưng về thực chất họ vẫn không chi phối được quá trình sản xuất và vẫn bị bóc lột.',
   },
   {
     id: 4,
-    question: 'Tầng lớp trung lưu Việt Nam được hình thành từ những nguồn nào?',
+    question: 'Đội ngũ Trí thức (nhóm xã hội thường được xếp vào tầng lớp trung lưu) giữ vị trí chiến lược như thế nào trong bối cảnh Cách mạng công nghiệp lần thứ tư?',
     options: [
-      'Chỉ từ trí thức',
-      'Chỉ từ doanh nhân',
-      'Trí thức + Doanh nhân + Công nhân hiện đại',
-      'Nông dân giàu có',
+      'Là lực lượng lao động sáng tạo đặc biệt quan trọng để đẩy mạnh công nghiệp hóa, hiện đại hóa và kinh tế tri thức.',
+      'Là lực lượng trực tiếp sản xuất lương thực, thực phẩm nuôi sống xã hội.',
+      'Là lực lượng trung gian, không có vai trò quan trọng trong liên minh giai cấp.',
+      'Là lực lượng thay thế hoàn toàn giai cấp công nhân trong sản xuất.',
     ],
-    correctIndex: 2,
-    explanation: 'Theo Chương 5, tầng lớp trung lưu Việt Nam đến từ 3 nguồn chính: Đội ngũ trí thức, Đội ngũ doanh nhân, và Công nhân hiện đại (trí thức hóa).',
+    correctIndex: 0,
+    explanation: 'Đội ngũ trí thức là lực lượng lao động sáng tạo đặc biệt quan trọng trong tiến trình đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước và hội nhập quốc tế, xây dựng kinh tế tri thức.',
   },
   {
     id: 5,
-    question: 'Mục tiêu tầng lớp trung lưu Việt Nam đến năm 2035 là bao nhiêu % dân số?',
-    options: ['26%', '35%', '50%', '70%'],
-    correctIndex: 2,
-    explanation: 'Theo dự báo, đến năm 2035 tầng lớp trung lưu Việt Nam sẽ chiếm khoảng 50% dân số - đây là thước đo quan trọng cho sự thành công của công cuộc xây dựng CNXH.',
+    question: 'Trong khối liên minh giai cấp, tầng lớp ở Việt Nam, yếu tố nào được xác định là động lực quan trọng cho sự phát triển nhanh và bền vững của đất nước?',
+    options: [
+      'Sự đấu tranh gay gắt giữa các tầng lớp xã hội mới.',
+      'Sự đồng thuận xã hội và khối đại đoàn kết toàn dân tộc (bao gồm cả doanh nhân, trí thức, v.v.).',
+      'Sự tách biệt quyền lợi giữa các nhóm người giàu và nghèo.',
+      'Sự phát triển độc lập của tầng lớp doanh nhân tách rời khỏi công nhân và nông dân.',
+    ],
+    correctIndex: 1,
+    explanation: 'Việc tạo sự đồng thuận và phát huy tinh thần đoàn kết thống nhất giữa các lực lượng trong khối liên minh (công nhân, nông dân, trí thức, doanh nhân...) là động lực chủ yếu của sự phát triển đất nước.',
   },
   {
     id: 6,
-    question: 'Nghị quyết nào của Bộ Chính trị (2023) khẳng định vai trò của đội ngũ doanh nhân?',
+    question: 'Để phát huy vai trò của các tầng lớp xã hội mới (như doanh nhân, trí thức) nhằm biến đổi cơ cấu xã hội theo hướng tích cực, giải pháp kinh tế căn bản là gì?',
     options: [
-      'Nghị quyết 36-NQ/TW',
-      'Nghị quyết 41-NQ/TW',
-      'Nghị quyết 45-NQ/TW',
-      'Nghị quyết 52-NQ/TW',
+      'Ngăn cản sự phát triển của kinh tế tư nhân.',
+      'Đẩy mạnh công nghiệp hóa, hiện đại hóa, phát triển kinh tế tri thức và kinh tế thị trường định hướng XHCN.',
+      'Quay lại nền kinh tế bao cấp hoàn toàn.',
+      'Chỉ tập trung phát triển nông nghiệp truyền thống.',
     ],
     correctIndex: 1,
-    explanation: 'Nghị quyết 41-NQ/TW (năm 2023) của Bộ Chính trị về xây dựng đội ngũ doanh nhân đã khẳng định vai trò quan trọng của họ trong cơ cấu xã hội và phát triển kinh tế.',
+    explanation: 'Cơ cấu xã hội muốn biến đổi theo hướng tích cực phải dựa trên cơ sở tăng trưởng và phát triển kinh tế nhanh, bền vững, gắn liền với đẩy mạnh công nghiệp hóa, hiện đại hóa và phát triển kinh tế tri thức.',
   },
   {
     id: 7,
-    question: '"Kỷ nguyên vươn mình" gắn liền với lực lượng sản xuất mới nào?',
+    question: 'Trong thời kỳ quá độ lên chủ nghĩa xã hội, bên cạnh các giai cấp cơ bản, cơ cấu xã hội Việt Nam xuất hiện thêm những nhóm xã hội mới nào?',
     options: [
-      'Nông nghiệp hữu cơ',
-      'Công nghiệp nặng',
-      'Kinh tế số, kinh tế xanh, kinh tế dữ liệu',
-      'Thương mại truyền thống',
+      'Tầng lớp quý tộc và tăng lữ.',
+      'Tầng lớp doanh nhân, tiểu chủ, những người giàu có và trung lưu.',
+      'Tầng lớp tư sản mại bản và địa chủ.',
+      'Tầng lớp nô lệ và chủ nô mới.',
     ],
-    correctIndex: 2,
-    explanation: 'Trong dự thảo Báo cáo chính trị trình Đại hội XIV, "Kỷ nguyên vươn mình" gắn liền với phát triển Lực lượng sản xuất mới: kinh tế số, kinh tế tuần hoàn, kinh tế xanh, kinh tế dữ liệu.',
+    correctIndex: 1,
+    explanation: 'Giáo trình ghi nhận sự xuất hiện của "tầng lớp doanh nhân, tiểu chủ, tầng lớp những người giàu có và trung lưu trong xã hội".',
   },
   {
     id: 8,
-    question: 'Theo quan điểm Mác-Lênin, khi phương thức sản xuất thay đổi thì điều gì xảy ra?',
+    question: 'Yếu tố nào được xem là nguyên nhân quyết định dẫn đến sự biến đổi của cơ cấu xã hội - giai cấp trong thời kỳ quá độ?',
     options: [
-      'Cơ cấu xã hội không đổi',
-      'Cơ cấu xã hội tất yếu thay đổi theo',
-      'Chỉ có kinh tế thay đổi',
-      'Văn hóa thay đổi trước',
+      'Sự thay đổi về văn hóa và lối sống.',
+      'Sự biến đổi của cơ cấu kinh tế (phương thức sản xuất, ngành nghề, thành phần kinh tế).',
+      'Sự gia tăng dân số cơ học.',
+      'Sự thay đổi về địa giới hành chính.',
     ],
     correctIndex: 1,
-    explanation: 'Theo Chủ nghĩa xã hội khoa học, cơ cấu xã hội có quan hệ biện chứng với cơ cấu kinh tế. Khi phương thức sản xuất thay đổi, cơ cấu xã hội cũng tất yếu thay đổi theo.',
+    explanation: 'Cơ cấu xã hội - giai cấp thường xuyên biến đổi do tác động của nhiều yếu tố, đặc biệt là những thay đổi về cơ cấu kinh tế, phương thức sản xuất.',
+  },
+  {
+    id: 9,
+    question: 'Xu hướng biến đổi chủ đạo của các giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội là gì?',
+    options: [
+      'Phân hóa sâu sắc và đối kháng gay gắt.',
+      'Xích lại gần nhau, từng bước xóa bỏ bất bình đẳng xã hội.',
+      'Tách biệt hoàn toàn về lợi ích kinh tế.',
+      'Hình thành các đẳng cấp khép kín.',
+    ],
+    correctIndex: 1,
+    explanation: 'Xu hướng tất yếu là sự vận động, phát triển theo hướng "xích lại gần nhau", từng bước xóa bỏ dần tình trạng bóc lột và tiến tới công bằng, bình đẳng.',
+  },
+  {
+    id: 10,
+    question: 'Nhóm xã hội nào được xác định là "lực lượng lao động sáng tạo đặc biệt quan trọng" trong tiến trình đẩy mạnh công nghiệp hóa, hiện đại hóa và hội nhập quốc tế?',
+    options: [
+      'Giai cấp nông dân.',
+      'Đội ngũ doanh nhân.',
+      'Đội ngũ trí thức.',
+      'Tầng lớp tiểu chủ.',
+    ],
+    correctIndex: 2,
+    explanation: 'Đội ngũ trí thức là lực lượng lao động sáng tạo đặc biệt quan trọng trong tiến trình đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước và hội nhập quốc tế.',
+  },
+  {
+    id: 11,
+    question: 'Giáo trình xác định vai trò xã hội quan trọng của đội ngũ doanh nhân Việt Nam hiện nay là gì bên cạnh việc phát triển kinh tế?',
+    options: [
+      'Tham gia giải quyết các vấn đề an sinh xã hội, xóa đói, giảm nghèo.',
+      'Thay thế vai trò lãnh đạo của giai cấp công nhân.',
+      'Quản lý toàn bộ hệ thống chính trị.',
+      'Quyết định đường lối ngoại giao của đất nước.',
+    ],
+    correctIndex: 0,
+    explanation: 'Đội ngũ doanh nhân đóng góp tích cực vào việc giải quyết việc làm cho người lao động và "tham gia giải quyết các vấn đề an sinh xã hội, xóa đói, giảm nghèo".',
+  },
+  {
+    id: 12,
+    question: 'Mục tiêu xây dựng đội ngũ doanh nhân lớn mạnh của Đảng ta bao gồm những tiêu chí nào?',
+    options: [
+      'Chỉ cần có vốn đầu tư lớn.',
+      'Có năng lực, trình độ quản trị, kinh doanh giỏi, có đạo đức nghề nghiệp và trách nhiệm xã hội cao.',
+      'Phải xuất thân từ thành phần kinh tế nhà nước.',
+      'Phải hoạt động hoàn toàn trong lĩnh vực xuất khẩu.',
+    ],
+    correctIndex: 1,
+    explanation: 'Xây dựng đội ngũ doanh nhân lớn mạnh, có năng lực, trình độ quản trị, kinh doanh giỏi, phẩm chất đạo đức, văn hóa kinh doanh và trách nhiệm xã hội cao.',
+  },
+  {
+    id: 13,
+    question: 'Khái niệm "Công nhân trí thức", "Công nhân áo trắng" phản ánh xu hướng biến đổi nào của giai cấp công nhân hiện đại?',
+    options: [
+      'Xu hướng bần cùng hóa.',
+      'Xu hướng "trí tuệ hóa" (nâng cao trình độ chuyên môn kỹ thuật).',
+      'Xu hướng hành chính hóa.',
+      'Xu hướng phi chính trị hóa.',
+    ],
+    correctIndex: 1,
+    explanation: 'Bộ phận "công nhân hiện đại", "công nhân trí thức" ngày càng lớn mạnh, đại diện cho phương thức sản xuất tiên tiến và xu hướng trí tuệ hóa.',
+  },
+  {
+    id: 14,
+    question: 'Trong liên minh giai cấp, đội ngũ trí thức có vai trò đặc biệt gì trong việc hỗ trợ công nhân và nông dân?',
+    options: [
+      'Cung cấp vốn đầu tư sản xuất.',
+      'Truyền bá tri thức, khoa học công nghệ và nâng cao dân trí.',
+      'Trực tiếp cày cấy và vận hành máy móc thay cho nông dân.',
+      'Quản lý hành chính nhà nước tại địa phương.',
+    ],
+    correctIndex: 1,
+    explanation: 'Đội ngũ trí thức là lực lượng trực tiếp nâng tầm trí tuệ của dân tộc, sức mạnh của đất nước, đưa khoa học công nghệ vào sản xuất nông nghiệp và công nghiệp.',
+  },
+  {
+    id: 15,
+    question: 'Nội dung kinh tế của liên minh giữa công nhân, nông dân và trí thức nhằm mục đích chính là gì?',
+    options: [
+      'Chia đều tài sản cho mọi thành viên trong xã hội.',
+      'Thỏa mãn các nhu cầu, lợi ích kinh tế thiết thân của các chủ thể, tạo cơ sở vật chất - kỹ thuật cho CNXH.',
+      'Loại bỏ hoàn toàn kinh tế tư nhân.',
+      'Tập trung toàn bộ nguồn lực cho công nghiệp nặng.',
+    ],
+    correctIndex: 1,
+    explanation: 'Nội dung kinh tế là thực hiện các nhu cầu, lợi ích kinh tế của các chủ thể, xây dựng nền kinh tế mới và tạo cơ sở vật chất - kỹ thuật cần thiết cho chủ nghĩa xã hội.',
+  },
+  {
+    id: 16,
+    question: 'Một trong những giải pháp để "xây dựng cơ cấu xã hội - giai cấp" theo hướng tích cực là gì?',
+    options: [
+      'Đẩy mạnh công nghiệp hóa, hiện đại hóa gắn với phát triển kinh tế tri thức.',
+      'Duy trì nền kinh tế nông nghiệp thuần túy.',
+      'Hạn chế sự phát triển của các đô thị.',
+      'Giảm bớt số lượng sinh viên đại học.',
+    ],
+    correctIndex: 0,
+    explanation: 'Đẩy mạnh công nghiệp hóa, hiện đại hóa; giải quyết tốt mối quan hệ giữa tăng trưởng kinh tế với đảm bảo tiến bộ, công bằng xã hội là giải pháp để thúc đẩy biến đổi cơ cấu xã hội tích cực.',
+  },
+  {
+    id: 17,
+    question: 'Trong khối đại đoàn kết toàn dân tộc, lực lượng nào được xác định là "nòng cốt"?',
+    options: [
+      'Chỉ riêng giai cấp công nhân.',
+      'Liên minh giữa giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức.',
+      'Tầng lớp doanh nhân và tiểu chủ.',
+      'Các lực lượng vũ trang nhân dân.',
+    ],
+    correctIndex: 1,
+    explanation: 'Liên minh giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức là "nòng cốt" trong khối đại đoàn kết toàn dân tộc.',
+  },
+  {
+    id: 18,
+    question: 'Sự biến đổi của giai cấp nông dân trong thời kỳ quá độ diễn ra theo xu hướng nào?',
+    options: [
+      'Tăng nhanh về số lượng và tỷ trọng trong cơ cấu xã hội.',
+      'Giảm dần về số lượng và tỷ lệ, một bộ phận chuyển sang làm công nhân hoặc dịch vụ.',
+      'Giữ nguyên trạng thái sản xuất nhỏ lẻ, manh mún.',
+      'Chuyển toàn bộ thành công nhân nông nghiệp trong các nông trường quốc doanh.',
+    ],
+    correctIndex: 1,
+    explanation: 'Giai cấp nông dân có xu hướng giảm dần về số lượng và tỷ lệ; một bộ phận chuyển sang lao động trong các khu công nghiệp hoặc dịch vụ.',
+  },
+  {
+    id: 19,
+    question: 'Vai trò của Thế hệ trẻ (Thanh niên) trong cơ cấu xã hội và sự nghiệp xây dựng đất nước được mô tả như thế nào?',
+    options: [
+      'Là lực lượng phụ trợ, chưa cần quan tâm nhiều.',
+      'Là rường cột của nước nhà, chủ nhân tương lai của đất nước.',
+      'Chỉ tập trung vào việc học tập lý thuyết.',
+      'Là lực lượng lao động thủ công chủ yếu.',
+    ],
+    correctIndex: 1,
+    explanation: 'Thế hệ trẻ là "rường cột của nước nhà, chủ nhân tương lai của đất nước", là lực lượng xung kích trong xây dựng và bảo vệ Tổ quốc.',
+  },
+  {
+    id: 20,
+    question: 'Để phát huy vai trò của tầng lớp trung lưu và các tầng lớp nhân dân khác, "Nội dung Chính trị" của liên minh yêu cầu điều gì?',
+    options: [
+      'Giữ vững lập trường chính trị - tư tưởng của giai cấp công nhân và vai trò lãnh đạo của Đảng.',
+      'Cho phép đa đảng và đa nguyên chính trị tự do.',
+      'Tách rời chính trị khỏi các hoạt động kinh tế.',
+      'Các tầng lớp tự phát triển không cần sự định hướng.',
+    ],
+    correctIndex: 0,
+    explanation: 'Nội dung chính trị của liên minh là giữ vững lập trường chính trị - tư tưởng của giai cấp công nhân, đồng thời giữ vững vai trò lãnh đạo của Đảng Cộng sản Việt Nam.',
   },
 ];
 
+// Function to randomly select 15 questions from the 20 available
+const getRandomQuestions = (count: number = 15): Question[] => {
+  const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+};
+
 const GamePage: React.FC = () => {
+  // Initialize with 15 random questions from the pool of 20
+  const [quizQuestions, setQuizQuestions] = useState<Question[]>(() => getRandomQuestions(15));
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -139,6 +302,7 @@ const GamePage: React.FC = () => {
   };
 
   const handleRestart = () => {
+    setQuizQuestions(getRandomQuestions(15)); // Get new random questions
     setCurrentQuestion(0);
     setSelectedAnswer(null);
     setShowResult(false);
