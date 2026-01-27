@@ -11,6 +11,7 @@ const HomePage = lazy(() => import('@/pages/HomePage'));
 const KnowledgePage = lazy(() => import('@/pages/KnowledgePage'));
 const VideoPage = lazy(() => import('@/pages/VideoPage'));
 const GamePage = lazy(() => import('@/pages/GamePage'));
+const HardGamePage = lazy(() => import('@/pages/HardGamePage'));
 const LibraryPage = lazy(() => import('@/pages/LibraryPage'));
 const AIUsagePage = lazy(() => import('@/pages/AIUsagePage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
@@ -117,9 +118,8 @@ const App: React.FC = () => {
 
       {/* Main Content */}
       <div
-        className={`transition-opacity duration-700 ${
-          showContent ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`transition-opacity duration-700 ${showContent ? 'opacity-100' : 'opacity-0'
+          }`}
         style={{ visibility: showContent ? 'visible' : 'hidden' }}
       >
         <Router>
@@ -133,6 +133,7 @@ const App: React.FC = () => {
                   <Route path="/kien-thuc" element={<KnowledgePage />} />
                   <Route path="/video" element={<VideoPage />} />
                   <Route path="/game" element={<GamePage />} />
+                  <Route path="/hard-game" element={<HardGamePage />} />
                   <Route path="/thu-vien-3d" element={<LibraryPage />} />
                   <Route path="/ai-usage" element={<AIUsagePage />} />
                   <Route path="/tai-lieu-tham-chieu" element={<ReferencesPage />} />

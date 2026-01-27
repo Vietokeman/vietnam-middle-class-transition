@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Youtube, Gamepad2, BookOpen, Info, Images, FileText } from 'lucide-react';
+import { Menu, X, Home, Youtube, Gamepad2, BookOpen, Info, Images, FileText, Crown } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +22,7 @@ const Header: React.FC = () => {
     { path: '/kien-thuc', label: 'Kiến thức', icon: <BookOpen size={18} /> },
     { path: '/video', label: 'Video', icon: <Youtube size={18} /> },
     { path: '/game', label: 'Trò chơi', icon: <Gamepad2 size={18} /> },
+    { path: '/hard-game', label: 'Vua Mật Mã', icon: <Crown size={18} /> },
     { path: '/thu-vien-3d', label: 'Thư viện 3D', icon: <Images size={18} /> },
     { path: '/ai-usage', label: 'Báo cáo AI', icon: <BookOpen size={18} /> },
     { path: '/tai-lieu-tham-chieu', label: 'Tài liệu tham chiếu', icon: <FileText size={18} /> },
@@ -30,17 +31,16 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-gradient-to-r from-vietnam-red-700 via-vietnam-red-600 to-vietnam-red-700 backdrop-blur-md shadow-lg border-b border-vietnam-gold-500/30'
-          : 'bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-gradient-to-r from-vietnam-red-700 via-vietnam-red-600 to-vietnam-red-700 backdrop-blur-md shadow-lg border-b border-vietnam-gold-500/30'
+        : 'bg-gradient-to-b from-black/60 to-transparent backdrop-blur-sm'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo with spinning star animation */}
           <Link to="/" className="flex items-center gap-3 group">
-            <motion.div 
+            <motion.div
               className="relative"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -69,11 +69,10 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
-                  location.pathname === item.path
-                    ? 'bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30'
-                    : 'text-white/80 hover:bg-white/10 hover:text-vietnam-gold-400'
-                }`}
+                className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${location.pathname === item.path
+                  ? 'bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30'
+                  : 'text-white/80 hover:bg-white/10 hover:text-vietnam-gold-400'
+                  }`}
               >
                 {item.icon}
                 <span className="text-sm font-medium">{item.label}</span>
@@ -106,11 +105,10 @@ const Header: React.FC = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    location.pathname === item.path
-                      ? 'bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30'
-                      : 'text-white/80 hover:bg-white/10'
-                  }`}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${location.pathname === item.path
+                    ? 'bg-vietnam-gold-500/20 text-vietnam-gold-400 border border-vietnam-gold-500/30'
+                    : 'text-white/80 hover:bg-white/10'
+                    }`}
                 >
                   {item.icon}
                   <span className="font-medium">{item.label}</span>
